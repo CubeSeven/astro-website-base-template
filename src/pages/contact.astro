@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE, canonicalUrl, generateContactSchema } from '../data/site.config';
+
+const contactSchema = generateContactSchema();
+---
+
+<Layout
+  title="Contact Us | Skiathos Fish Market — Fresh Aegean Seafood Orders & Delivery"
+  description="Contact Skiathos Fish Market at 48 Ethnikis Antistaseos, Skiathos Town, Magnisia 37002. Call 693 115 6528, WhatsApp, or email. Open 24/7 for fresh Aegean seafood orders and delivery across Skiathos."
+  canonical={canonicalUrl("/contact/")}
+>
+  <Header />
+  <Breadcrumbs items={[{name: "Home", url: "/"}, {name: "Contact", url: "/contact"}]} />
+
+  <!-- ContactPoint Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(contactSchema)}></script>
+
+  <section class="py-20 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16">
+        
+        <div>
+          <span data-motion style="letter-spacing: -0.01em;" class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block">Contact Us</span>
+          <h1 style="text-shadow: 0 0 40px rgba(74,127,157,0.08);" class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-6">
+            <span data-animate>Get in Touch</span>
+          </h1>
+          <p data-animate class="text-lg text-neutral-600 mb-12">
+            We're available 24/7. Call, WhatsApp, or email us and we'll respond quickly.
+          </p>
+
+          <div class="flex flex-col gap-8">
+            <div data-motion style="--motion-delay:0ms" class="hover-lift flex items-start gap-5">
+              <div class="icon-container w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center shrink-0">
+                <Icon name="phone" class="w-7 h-7 text-brand-600" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 mb-1">Phone</h3>
+                <a href={`tel:${SITE.business.contact.phone.raw}`} class="ripple-container text-brand-600 text-lg hover:underline">{SITE.business.contact.phone.display}</a>
+                <p class="text-neutral-500 text-sm mt-1">Available 24/7 for calls</p>
+              </div>
+            </div>
+
+            <div data-motion style="--motion-delay:80ms" class="hover-lift flex items-start gap-5">
+              <div class="icon-container w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center shrink-0">
+                <Icon name="whatsapp" class="w-7 h-7 text-green-600" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 mb-1">WhatsApp</h3>
+                <a href={SITE.business.contact.whatsappUrl} target="_blank" class="ripple-container text-green-600 text-lg hover:underline">{SITE.business.contact.phone.display}</a>
+                <p class="text-neutral-500 text-sm mt-1">We respond fast on WhatsApp</p>
+              </div>
+            </div>
+
+            <div data-motion style="--motion-delay:160ms" class="hover-lift flex items-start gap-5">
+              <div class="icon-container w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center shrink-0">
+                <Icon name="mail" class="w-7 h-7 text-brand-600" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 mb-1">Email</h3>
+                <a href={`mailto:${SITE.business.contact.email}`} class="text-brand-600 text-lg hover:underline break-all">{SITE.business.contact.email}</a>
+              </div>
+            </div>
+
+            <div data-motion style="--motion-delay:240ms" class="hover-lift flex items-start gap-5">
+              <div class="icon-container w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center shrink-0">
+                <Icon name="map-pin" class="w-7 h-7 text-brand-600" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 mb-1">Address</h3>
+                <p class="text-neutral-600 text-lg">{SITE.business.address.street}</p>
+                <p class="text-neutral-600">{SITE.business.address.locality}, {SITE.business.address.region} {SITE.business.address.postalCode}</p>
+                <p class="text-neutral-500 text-sm mt-1">{SITE.business.address.countryName}</p>
+              </div>
+            </div>
+
+            <div data-motion style="--motion-delay:320ms" class="hover-lift flex items-start gap-5">
+              <div class="icon-container w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center shrink-0">
+                <Icon name="clock" class="w-7 h-7 text-brand-600" />
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-neutral-900 mb-1">Hours</h3>
+                <p class="text-neutral-600 text-lg">{SITE.business.hours.display}</p>
+                <p class="text-neutral-500 text-sm mt-1">24 hours a day, 7 days a week — call anytime</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-motion class="hover-lift rounded-3xl overflow-hidden h-[500px] lg:h-auto min-h-[400px]">
+          <iframe
+            src={SITE.maps.googleMaps}
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            class="rounded-3xl"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    badge="Call Us Today"
+    title="Contact Skiathos Fish Market — 24/7 Fresh Seafood Service"
+    description="Available 24/7. We're just a call or message away."
+    buttonText="Send WhatsApp"
+    buttonLink={SITE.business.contact.whatsappUrl}
+    image="/images/skiathos-fish-04.webp"
+    altText="Contact Skiathos Fish Market for fresh seafood orders — 48 Ethnikis Antistaseos, Skiathos Town, 24/7"
+  />
+
+  <script>
+    document.querySelectorAll('.ripple-container').forEach(function(el) {
+      el.addEventListener('click', function(e) {
+        var ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        var rect = el.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        el.appendChild(ripple);
+        ripple.addEventListener('animationend', function() { ripple.remove(); });
+      });
+    });
+  </script>
+
+  <Footer />
+</Layout>

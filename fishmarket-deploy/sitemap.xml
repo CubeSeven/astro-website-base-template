@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://fishmarketskiathos.gr/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://fishmarketskiathos.gr/images/skiathos-hero-home.webp</image:loc>
+      <image:caption>Fresh Aegean seafood at Skiathos Fish Market, Skiathos Town</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/fresh-seafood/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://fishmarketskiathos.gr/images/skiathos-hero-seafood.webp</image:loc>
+      <image:caption>Aegean seafood categories at Skiathos Fish Market</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/traditional-seasonal/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://fishmarketskiathos.gr/images/skiathos-fish-08.webp</image:loc>
+      <image:caption>Traditional seasonal seafood for Greek holidays at Skiathos Fish Market</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/wholesale-yachts/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://fishmarketskiathos.gr/images/skiathos-hero-wholesale.webp</image:loc>
+      <image:caption>Wholesale and yacht provisioning at Skiathos Fish Market</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/gallery/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/contact/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fishmarketskiathos.gr/faq/</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

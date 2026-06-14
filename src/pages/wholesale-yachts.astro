@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import DeliveryAreasSlider from '../components/DeliveryAreasSlider.astro';
+import { SITE, canonicalUrl } from '../data/site.config';
+import { buildSrcset, heroSizes, halfSizes, thirdSizes } from '../utils/images';
+---
+
+<Layout
+  title="Wholesale, Yachts & Restaurant Provisioning | Skiathos Fish Market"
+  description="Licensed wholesale fish merchant in Skiathos Town. Temperature-controlled bulk delivery, kitchen-ready morning deliveries, custom commercial prep, and yacht provisioning."
+  canonical={canonicalUrl("/wholesale-yachts/")}
+  ogImage={`${SITE.url}/images/skiathos-hero-wholesale.webp`}
+>
+  <Header />
+  <Breadcrumbs items={[{name: "Home", url: "/"}, {name: "Wholesale & Yachts", url: "/wholesale-yachts"}]} />
+
+  <section class="relative min-h-[60vh] flex items-center bg-neutral-900 hero-noise hero-vignette">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="/images/skiathos-hero-wholesale.webp" srcset={buildSrcset("/images/skiathos-hero-wholesale.webp")} sizes={heroSizes} alt="Temperature-controlled wholesale seafood distribution from Skiathos Fish Market to restaurants and yachts" class="parallax-bg w-full h-full object-cover opacity-40 scale-110 will-change-transform">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <span data-motion class="inline-block text-brand-400 text-sm font-semibold tracking-widest uppercase mb-6" style="letter-spacing: -0.01em;">B2B Commercial Services</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight mb-6" style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">
+        <span data-animate>Wholesale &</span><br/>
+        <span data-animate class="text-brand-400">Yacht Provisioning</span>
+      </h1>
+      <p data-animate class="text-xl text-white/80 max-w-2xl leading-relaxed">
+         Licensed wholesale fish merchant serving restaurants, hotels, villas, and vessels
+         across Skiathos and the Northern Sporades. Temperature-controlled delivery, kitchen-ready seafood,
+         and fresh Aegean catch for commercial clients.
+       </p>
+    </div>
+  </section>
+
+  <!-- Commercial Credentials -->
+  <section class="py-16 bg-white border-b border-neutral-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-motion class="flex flex-wrap justify-center items-center gap-8">
+        <div class="flex items-center gap-2 glass-glow">
+          <Icon name="certificate" class="w-6 h-6 text-brand-500" />
+          <span class="text-sm font-semibold text-neutral-700">Licensed Wholesale Merchant</span>
+        </div>
+        <div class="w-px h-6 bg-neutral-200 hidden sm:block"></div>
+        <div class="flex items-center gap-2 glass-glow">
+          <Icon name="thermometer-cold" class="w-6 h-6 text-brand-500" />
+          <span class="text-sm font-semibold text-neutral-700">Temperature-Controlled Delivery</span>
+        </div>
+        <div class="w-px h-6 bg-neutral-200 hidden sm:block"></div>
+        <div class="flex items-center gap-2 glass-glow">
+          <Icon name="clock" class="w-6 h-6 text-brand-500" />
+          <span class="text-sm font-semibold text-neutral-700">24/7 Availability</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2B Service Cards -->
+  <section class="py-20 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-16">
+        <!-- Header - Split Layout -->
+        <div class="grid lg:grid-cols-12 gap-8 items-end">
+          <div data-motion class="lg:col-span-8">
+            <span data-motion class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-100 rounded-full text-brand-700 text-sm font-medium mb-6 tag-pill-light">
+              <span class="w-1.5 h-1.5 bg-brand-500 rounded-full"></span>
+              Commercial Distribution
+            </span>
+            <h2 style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">
+              <span data-animate class="text-4xl sm:text-5xl font-bold text-neutral-900">Wholesale Distribution Services</span>
+            </h2>
+          </div>
+          <div class="lg:col-span-4">
+            <p data-animate class="text-neutral-600">
+              From tavernas to superyachts, we deliver fresh Aegean seafood with reliable, professional service.
+            </p>
+          </div>
+        </div>
+
+        <!-- Feature Cards - Stacked Layout -->
+        <div class="flex flex-col gap-6">
+          <!-- Card 1 - Full Width (Yacht) -->
+          <div data-motion class="grid lg:grid-cols-12 gap-6 p-6 bg-brand-50 rounded-3xl hover-border-draw">
+            <div class="lg:col-span-5 rounded-2xl overflow-hidden h-56 lg:h-auto hover-lift">
+              <img data-motion src="/images/wholesale-yacht.webp" srcset={buildSrcset("/images/wholesale-yacht.webp")} sizes={halfSizes} alt="Luxury yacht provisioning at Skiathos Marina" class="w-full h-full object-cover" loading="lazy">
+            </div>
+            <div class="lg:col-span-7 flex flex-col justify-center gap-4">
+              <h3 class="text-2xl font-bold text-neutral-900">Yacht & Maritime Provisioning</h3>
+              <p class="text-neutral-600">Dedicated provisioning for yachts and maritime vessels at Skiathos Marina and the Old Port. From day-trip motor yachts to superyachts, we deliver live lobster, tuna, and fresh Aegean catch. Temperature-controlled and harbour-coordinated.</p>
+              <div class="flex flex-wrap gap-3">
+                <span data-motion class="px-3 py-1.5 bg-white rounded-full text-sm text-neutral-700 tag-pill-light" style="--motion-delay:0ms">Harbor Delivery</span>
+                <span data-motion class="px-3 py-1.5 bg-white rounded-full text-sm text-neutral-700 tag-pill-light" style="--motion-delay:100ms">Live Selections</span>
+                <span data-motion class="px-3 py-1.5 bg-white rounded-full text-sm text-neutral-700 tag-pill-light" style="--motion-delay:200ms">Charter Menus</span>
+              </div>
+              <div class="flex flex-col gap-2 mt-2">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Temperature-controlled transport</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Onboard tank coordination</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cards Row -->
+          <div class="grid lg:grid-cols-3 gap-6">
+            <!-- Card 2 - Villa -->
+            <div data-motion class="p-6 bg-neutral-50 rounded-3xl flex flex-col gap-4 hover-border-draw">
+              <div class="rounded-2xl overflow-hidden h-44 hover-lift">
+                <img data-motion src="/images/wholesale-villa.webp" srcset={buildSrcset("/images/wholesale-villa.webp")} sizes={thirdSizes} alt="Luxury villa delivery in Skiathos" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <h3 class="text-lg font-semibold text-neutral-900">Villa & Concierge Services</h3>
+              <p class="text-sm text-neutral-600">Direct provisioning for villas and private chefs across Skiathos. Fresh Aegean catch timed to guest schedules and events.</p>
+              <div class="flex flex-col gap-2 mt-auto">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Villa direct delivery</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Private chef coordination</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Reliable, on-time service</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3 - Restaurant -->
+            <div data-motion class="p-6 bg-neutral-50 rounded-3xl flex flex-col gap-4 hover-border-draw">
+              <div class="rounded-2xl overflow-hidden h-44 hover-lift">
+                <img data-motion src="/images/wholesale-restaurant.webp" srcset={buildSrcset("/images/wholesale-restaurant.webp")} sizes={thirdSizes} alt="Restaurant seafood delivery in Skiathos" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <h3 class="text-lg font-semibold text-neutral-900">Restaurant & Hotel Supply</h3>
+              <p class="text-sm text-neutral-600">Daily fresh catch deliveries to tavernas, restaurants, and hotels across Skiathos. Reliable quality at fair wholesale prices.</p>
+              <div class="flex flex-col gap-2 mt-auto">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Morning kitchen-ready deliveries</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Custom bulk orders</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Flexible delivery scheduling</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 - Custom Prep -->
+            <div data-motion class="p-6 bg-neutral-50 rounded-3xl flex flex-col gap-4 hover-border-draw">
+              <div class="rounded-2xl overflow-hidden h-44 hover-lift">
+                <img data-motion src="/images/wholesale-custom.webp" srcset={buildSrcset("/images/wholesale-custom.webp")} sizes={thirdSizes} alt="Custom commercial seafood preparation" class="w-full h-full object-cover" loading="lazy">
+              </div>
+              <h3 class="text-lg font-semibold text-neutral-900">Custom Commercial Preparation</h3>
+              <p class="text-sm text-neutral-600">Large-scale preparation for busy kitchens. Standardized portions, vacuum packaging, and HACCP-compliant processing.</p>
+              <div class="flex flex-col gap-2 mt-auto">
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Standardized portion control</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">Bulk cleaning & preparation</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <div class="w-2 h-2 bg-brand-500 rounded-full"></div>
+                  <span class="text-sm text-neutral-600">HACCP-compliant processing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <DeliveryAreasSlider />
+
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-motion class="max-w-3xl mx-auto text-center">
+        <span class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block" style="letter-spacing: -0.01em;">Our Process</span>
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 mb-8" data-animate style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">How Commercial Ordering Works</h2>
+      </div>
+
+      <div class="grid md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+        <div data-motion class="text-center" style="--motion-delay:0ms">
+          <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+            <Icon name="phone" class="w-6 h-6 text-white" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Contact</h3>
+          <p class="text-neutral-600 text-sm">Call or WhatsApp us at 693 115 6528 to discuss your requirements</p>
+        </div>
+        <div data-motion class="text-center" style="--motion-delay:100ms">
+          <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+            <Icon name="clipboard" class="w-6 h-6 text-white" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Specify</h3>
+          <p class="text-neutral-600 text-sm">Detail your volume, categories, preparation needs, and delivery schedule</p>
+        </div>
+        <div data-motion class="text-center" style="--motion-delay:200ms">
+          <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+            <Icon name="package" class="w-6 h-6 text-white" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Prepare</h3>
+          <p class="text-neutral-600 text-sm">We source, process, and package your order to your specifications</p>
+        </div>
+        <div data-motion class="text-center" style="--motion-delay:300ms">
+          <div class="w-16 h-16 bg-brand-600 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+            <Icon name="truck" class="w-6 h-6 text-white" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Deliver</h3>
+          <p class="text-neutral-600 text-sm">Temperature-controlled delivery that arrives on schedule</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    badge="Commercial Inquiry"
+    title="Start Your Wholesale & Yacht Order"
+    description="Tell us what you need for your kitchen, restaurant, or yacht."
+    buttonText="Call 693 115 6528"
+    buttonLink="tel:6931156528"
+    image="/images/skiathos-hero-wholesale.webp"
+    altText="Wholesale seafood distribution and yacht provisioning at Skiathos Fish Market"
+  />
+
+  <Footer />
+</Layout>

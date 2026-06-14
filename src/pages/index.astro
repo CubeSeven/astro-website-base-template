@@ -1,0 +1,291 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+
+import Features from '../components/Features.astro';
+import TestimonialsSlider from '../components/TestimonialsSlider.astro';
+import CTA from '../components/CTA.astro';
+import Footer from '../components/Footer.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, canonicalUrl } from '../data/site.config';
+import { buildSrcset, heroSizes, halfSizes } from '../utils/images';
+---
+
+<Layout
+  title="Home - Premium Fresh Seafood & Wholesale | Skiathos Fish Market"
+  description="Fish market in Skiathos Town. Trusted by our customers since 2004. Fresh Aegean seafood, professional fishmonger services, wholesale distribution, and yacht provisioning."
+  canonical={canonicalUrl("/")}
+  ogImage={`${SITE.url}/images/skiathos-hero-home.webp`}
+>
+  <Header />
+
+  <Hero
+    title="Always Fresh Seafood"
+    subtitle="Fish market in Skiathos Town. Sustainably sourced from the Aegean Sea, professionally prepared, and delivered fresh to families, restaurants, and luxury yachts across the island."
+    ctaText={`Call ${SITE.business.contact.phone.display}`}
+    ctaLink={`tel:${SITE.business.contact.phone.raw}`}
+    secondaryText="View Our Products"
+    secondaryLink="/fresh-seafood"
+    image={SITE.heroImage}
+    altText={`${SITE.name} — fresh Aegean seafood display at ${SITE.business.address.street}, ${SITE.business.address.locality}, ${SITE.business.address.countryName}`}
+  />
+
+  <!-- Trust Bar -->
+  <section class="py-16 bg-neutral-900 dark-section-glow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div data-motion style="--motion-delay:0ms" class="p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/10 flex items-center gap-4 glass-glow hover-lift cursor-pointer">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center shrink-0 icon-container" style="background: linear-gradient(135deg, rgba(74,127,157,0.15), rgba(74,127,157,0.05));">
+            <Icon name="users" class="w-6 h-6 text-brand-400" />
+          </div>
+          <div>
+            <p class="text-white font-semibold text-sm">Trusted by our customers</p>
+            <p class="text-white/50 text-xs mt-0.5">5-star rated on Google</p>
+          </div>
+        </div>
+        <div data-motion style="--motion-delay:100ms" class="p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/10 flex items-center gap-4 glass-glow hover-lift cursor-pointer">
+          <div class="w-12 h-12 bg-brand-500/10 rounded-2xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(74,127,157,0.15), rgba(74,127,157,0.05));">
+            <Icon name="medal" class="w-6 h-6 text-brand-400" />
+          </div>
+          <div>
+            <p class="text-white font-semibold text-sm">Licensed Wholesale Merchant</p>
+            <p class="text-white/50 text-xs mt-0.5">Ιχθυεμπόριο — Fully licensed and certified</p>
+          </div>
+        </div>
+        <div data-motion style="--motion-delay:200ms" class="p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/10 flex items-center gap-4 glass-glow hover-lift cursor-pointer">
+          <div class="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center shrink-0" style="background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));">
+            <Icon name="map-pin" class="w-6 h-6 text-white/60" />
+          </div>
+          <div>
+            <p class="text-white font-semibold text-sm">{SITE.business.address.street}</p>
+            <p class="text-white/50 text-xs mt-0.5">{SITE.business.address.locality}, {SITE.business.address.countryName}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Services -->
+  <section class="py-20 sm:py-24 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Centered Header -->
+      <div class="text-center max-w-3xl mx-auto mb-16" data-motion>
+        <span data-motion class="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-100 rounded-full text-brand-700 text-sm font-medium mb-6" style="letter-spacing: -0.01em;">
+          <span class="w-1.5 h-1.5 bg-brand-500 rounded-full"></span>
+          Professional Fishmonger Services
+        </span>
+        <h2 data-animate class="text-neutral-900 text-4xl sm:text-5xl font-bold mb-6" style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">
+          Expert Preparation & Processing
+        </h2>
+        <p data-animate class="text-neutral-600 text-lg">
+          Our master fishmongers provide professional-grade preparation services to ensure your seafood is kitchen-ready the moment it reaches you.
+        </p>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="grid md:grid-cols-3 gap-6">
+        <div data-motion style="--motion-delay:0ms" class="p-8 bg-white rounded-3xl text-center group hover:bg-brand-600 transition-all duration-500 cursor-pointer hover-lift hover-border-draw">
+          <div data-motion class="w-16 h-16 bg-brand-100 group-hover:bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 icon-container">
+            <Icon name="eye" class="w-8 h-8 text-brand-600 group-hover:text-white transition-all duration-500" />
+          </div>
+          <h3 class="text-neutral-900 group-hover:text-white text-xl font-semibold mb-3 transition-all duration-500">Expert Cleaning & Prep</h3>
+          <p class="text-neutral-600 group-hover:text-brand-100 text-base mb-6 transition-all duration-500">
+            We clean and prepare your catch so it is ready to cook the moment it reaches you. Done by our experienced fishmongers.
+          </p>
+        </div>
+
+        <div data-motion style="--motion-delay:100ms" class="p-8 bg-brand-600 rounded-3xl text-center hover-lift" style="box-shadow: 0 20px 50px -12px rgba(74,127,157,0.3);">
+          <div data-motion class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto icon-container" style="background: linear-gradient(135deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));">
+            <Icon name="knife" class="w-8 h-8 text-white" />
+          </div>
+          <h3 class="text-white text-xl font-semibold mb-3">Custom Preparation</h3>
+          <p class="text-brand-100 text-base mb-6">
+            Preparation tailored to your needs. Whole fish or portion cuts, cleaned and ready for the grill, oven, or pan.
+          </p>
+        </div>
+
+        <div data-motion style="--motion-delay:200ms" class="p-8 bg-white rounded-3xl text-center group hover:bg-brand-600 transition-all duration-500 cursor-pointer hover-lift hover-border-draw">
+          <div data-motion class="w-16 h-16 bg-brand-100 group-hover:bg-white/20 rounded-2xl flex items-center justify-center mb-6 mx-auto transition-all duration-500 icon-container">
+            <Icon name="droplet" class="w-8 h-8 text-brand-600 group-hover:text-white transition-all duration-500" />
+          </div>
+          <h3 class="text-neutral-900 group-hover:text-white text-xl font-semibold mb-3 transition-all duration-500">Specialized Desalting</h3>
+          <p class="text-neutral-600 group-hover:text-brand-100 text-base mb-6 transition-all duration-500">
+            We desalt preserved cod in-house the traditional way. Restores flavor and texture for Greek Easter, Clean Monday, and holiday cooking.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Service -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div data-motion>
+          <span class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block" style="letter-spacing: -0.01em;">For Everyone</span>
+          <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 leading-tight mb-6" style="text-shadow: 0 0 40px rgba(74,127,157,0.06);">
+            <span data-animate>Retail & Commercial — Same Quality</span>
+          </h2>
+          <p data-animate class="text-lg text-neutral-600 mb-6">
+            Local household, restaurant chef, or yacht crew — you get the same fresh Aegean seafood and honest service every time.
+            No shortcuts, no second-tier product.
+          </p>
+          <p data-animate class="text-lg text-neutral-600 mb-8">
+            We are a licensed wholesale fish merchant. Morning deliveries for tavernas, provisioning for yachts in the harbor, or dinner for the family — we handle it all.
+          </p>
+          <div data-motion class="flex flex-wrap gap-4">
+            <a href="/fresh-seafood" class="hover-shimmer inline-flex items-center gap-2 px-6 py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-full transition-colors active:scale-[0.97]">
+              Browse Retail
+              <Icon name="arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/wholesale-yachts" class="hover-shimmer inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-600 text-brand-600 font-semibold rounded-full hover:bg-brand-50 transition-colors active:scale-[0.97]">
+              Wholesale & Yachts
+            </a>
+          </div>
+        </div>
+        <div data-motion class="rounded-3xl overflow-hidden hover-lift">
+          <img src="/images/skiathos-fish-01.webp" alt="Premium fresh Aegean seafood selection at Skiathos Fish Market, 48 Ethnikis Antistaseos" class="w-full h-[500px] object-cover" loading="lazy" decoding="async" srcset={buildSrcset("/images/skiathos-fish-01.webp")} sizes={halfSizes} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Features
+    badge="Our Products"
+    heading="Fresh from the Aegean Sea"
+    items={[
+      { icon: "fish", title: "Fresh Whole Fish", description: "Locally caught, brought in daily. The finest selection from the Aegean Sea." },
+      { icon: "octopus", title: "Shellfish & Live Seafood", description: "Live shrimp, crab, lobster, and more. Brought in fresh daily." },
+      { icon: "snowflake", title: "Frozen Seafood", description: "Flash-frozen at peak freshness for when you need to stock up." },
+      { icon: "snowflake", title: "Fresh High Quality Ice", description: "Ice blocks and crushed ice available daily. Keeps your catch cold and your drinks chilled." },
+    ]}
+  />
+
+  <TestimonialsSlider />
+
+  <!-- Why Choose Us -->
+  <section class="py-20 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-motion class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block" style="letter-spacing: -0.01em;">The Skiathos Fish Market Difference</span>
+        <h2 class="text-4xl sm:text-5xl font-bold text-neutral-900 leading-tight" data-animate style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">Why Locals, Chefs & Yachts Choose Us</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div data-motion style="--motion-delay:0ms" class="p-6 bg-neutral-50 rounded-3xl hover-lift hover-border-draw cursor-pointer">
+          <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center mb-4 icon-container" style="animation: pulse-ring 2s ease-out infinite;">
+            <Icon name="star" class="w-6 h-6 text-brand-600" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Trusted by Our Customers</h3>
+          <p class="text-neutral-600 text-sm">5-star rated on Google. The fish market Skiathos locals and visitors rely on since 2004.</p>
+        </div>
+        <div data-motion style="--motion-delay:100ms" class="p-6 bg-neutral-50 rounded-3xl hover-lift hover-border-draw cursor-pointer">
+          <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center mb-4 icon-container" style="animation: pulse-ring 2s ease-out infinite 0.3s;">
+            <Icon name="certificate" class="w-6 h-6 text-brand-600" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Licensed Wholesale Merchant</h3>
+          <p class="text-neutral-600 text-sm">Licensed wholesale fish merchant (Ιχθυεμπόριο). Meets all health and commercial standards for restaurants, hotels, and yachts.</p>
+        </div>
+        <div data-motion style="--motion-delay:200ms" class="p-6 bg-neutral-50 rounded-3xl hover-lift hover-border-draw cursor-pointer">
+          <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center mb-4 icon-container" style="animation: pulse-ring 2s ease-out infinite 0.6s;">
+            <Icon name="truck" class="w-6 h-6 text-brand-600" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">Same-Day Delivery</h3>
+          <p class="text-neutral-600 text-sm">Temperature-controlled delivery across the island. From the Old Port to Koukounaries and everywhere between.</p>
+        </div>
+        <div data-motion style="--motion-delay:300ms" class="p-6 bg-neutral-50 rounded-3xl hover-lift hover-border-draw cursor-pointer">
+          <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center mb-4 icon-container" style="animation: pulse-ring 2s ease-out infinite 0.9s;">
+            <Icon name="heart" class="w-6 h-6 text-brand-600" />
+          </div>
+          <h3 class="text-lg font-bold text-neutral-900 mb-2">20+ Years of Trust</h3>
+          <p class="text-neutral-600 text-sm">Serving Skiathos Town since 2004. Families, chefs, and yacht crews have trusted us for over 20 years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Map -->
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div data-motion class="text-center max-w-3xl mx-auto mb-12">
+        <span class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block" style="letter-spacing: -0.01em;">Island-Wide Coverage</span>
+        <h2 class="text-3xl sm:text-4xl font-bold text-neutral-900 leading-tight" data-animate style="text-shadow: 0 0 40px rgba(74,127,157,0.06);">We Serve the Northern Sporades</h2>
+        <p data-animate class="text-neutral-600 text-lg mt-4">Fresh seafood delivery across Skiathos, Skopelos, and Alonissos.</p>
+      </div>
+      <div data-motion class="rounded-3xl overflow-hidden border border-neutral-200 shadow-lg hover-lift">
+        <iframe 
+          src={SITE.maps.openStreetMap} 
+          width="100%" 
+          height="450" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy"
+          title="Map showing Skiathos Fish Market service areas in the Northern Sporades"
+        ></iframe>
+      </div>
+      <div data-motion class="flex flex-wrap justify-center gap-3 mt-8">
+        <span class="tag-pill px-4 py-2 bg-white rounded-full text-neutral-700 text-sm font-medium shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 bg-brand-500 rounded-full"></span>
+          Skiathos
+        </span>
+        <span class="tag-pill px-4 py-2 bg-white rounded-full text-neutral-700 text-sm font-medium shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 bg-brand-400 rounded-full"></span>
+          Skopelos
+        </span>
+        <span class="tag-pill px-4 py-2 bg-white rounded-full text-neutral-700 text-sm font-medium shadow-sm flex items-center gap-2">
+          <span class="w-2 h-2 bg-brand-300 rounded-full"></span>
+          Alonissos
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <CTA
+    badge="Get in Touch"
+    title="Ready to Order Fresh Seafood at Skiathos Fish Market?"
+    description="Call or WhatsApp us anytime. We're open 24/7."
+    buttonText={`Call ${SITE.business.contact.phone.display}`}
+    buttonLink={`tel:${SITE.business.contact.phone.raw}`}
+    image="/images/skiathos-fish-05.webp"
+    altText="Call now to order fresh Aegean seafood from Skiathos Fish Market, 48 Ethnikis Antistaseos, Skiathos Town"
+  />
+
+  <Footer />
+</Layout>
+
+<script>
+  function animateCounters() {
+    const counters = document.querySelectorAll('[data-counter]');
+    if (!counters.length) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-counter'), 10);
+          const suffix = el.getAttribute('data-suffix') || '';
+          const prefix = el.getAttribute('data-prefix') || '';
+          const duration = 1500;
+          const start = performance.now();
+          
+          function update(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            el.textContent = prefix + current + suffix;
+            if (progress < 1) requestAnimationFrame(update);
+          }
+          
+          requestAnimationFrame(update);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(c => observer.observe(c));
+  }
+
+  document.addEventListener('DOMContentLoaded', animateCounters);
+</script>
