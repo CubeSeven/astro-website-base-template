@@ -1,13 +1,13 @@
 // Replace with your product or service categories.
 // These appear on your services/products page and in the ItemList schema.
 
-export interface SeafoodCategory {
+export interface ServiceCategory {
   name: string;
   description: string;
   position: number;
 }
 
-export const seafoodCategories: SeafoodCategory[] = [
+export const services: ServiceCategory[] = [
   {
     position: 1,
     name: "Category One",

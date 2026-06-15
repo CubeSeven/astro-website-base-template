@@ -6,7 +6,7 @@ import { buildSrcset, heroSizes } from '../utils/images';
 const { badge, title, description, buttonText, buttonLink, dark, image, altText } = Astro.props;
 
 const ctaSrcset = image ? buildSrcset(image) : '';
-const ctaAlt = altText || "Fresh Aegean seafood at Skiathos Fish Market, 48 Ethnikis Antistaseos, Skiathos Town";
+const ctaAlt = altText || `${SITE.name} — contact us at ${SITE.business.address.street}, ${SITE.business.address.locality}`;
 ---
 
 <section class={`py-20 sm:py-24 ${image ? 'bg-white' : (dark ? 'bg-neutral-900' : 'bg-brand-600')}`}>

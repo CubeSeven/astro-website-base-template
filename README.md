@@ -46,7 +46,7 @@ Edit the single source of truth for ALL site data:
 | `faq.ts` | FAQ questions and answers |
 | `delivery-areas.ts` | Service/delivery area descriptions |
 | `gallery.ts` | Gallery images and alt text |
-| `seafood-categories.ts` | Product/service categories |
+| `services.ts` | Product/service categories |
 
 ### Step 3: Brand Colors & Fonts — `src/styles/theme.css`
 
@@ -58,7 +58,7 @@ Edit the single source of truth for ALL site data:
 
 | File | What to replace |
 |---|---|
-| `public/fishmarket-logo-v2.svg` | Your logo SVG |
+| `public/logo.svg` | Your logo SVG |
 | `public/favicon-*.png` | Your favicons |
 | `public/apple-touch-icon.png` | Apple touch icon |
 | `public/manifest.json` | Update `name`, `short_name`, `description` |
@@ -85,7 +85,7 @@ src/
 │       ├── faq.ts
 │       ├── delivery-areas.ts
 │       ├── gallery.ts
-│       └── seafood-categories.ts
+│       └── services.ts
 ├── components/                  Reusable Astro components
 │   ├── Layout.astro            HTML shell, SEO metadata, structured data
 │   ├── Header.astro            Sticky navigation (reads from config)
@@ -101,12 +101,11 @@ src/
 │   └── ...
 ├── pages/                       Route files (one .astro per URL)
 │   ├── index.astro
+│   ├── about.astro
+│   ├── services.astro
 │   ├── contact.astro
 │   ├── faq.astro
 │   ├── gallery.astro
-│   ├── fresh-seafood.astro
-│   ├── wholesale-yachts.astro
-│   ├── traditional-seasonal.astro
 │   └── 404.astro
 ├── styles/
 │   ├── theme.css               ★ Brand colors, fonts, border-radius

@@ -4,16 +4,8 @@ export interface Props {
 }
 const { items } = Astro.props;
 
-const schema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": items.map((item, i) => ({
-    "@type": "ListItem",
-    "position": i + 1,
-    "name": item.name,
-    "item": "https://fishmarketskiathos.gr" + item.url
-  }))
-};
+import { generateBreadcrumbSchema } from '../data/site.config';
+const schema = generateBreadcrumbSchema(items);
 ---
 
 <nav aria-label="Breadcrumb" class="py-4 bg-white border-b border-neutral-100">

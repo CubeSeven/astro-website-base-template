@@ -6,7 +6,7 @@ import { buildSrcset, heroSizes } from '../utils/images';
 const { title, subtitle, ctaText, ctaLink, secondaryText, secondaryLink, image, altText } = Astro.props;
 
 const heroSrcset = buildSrcset(image);
-const heroAlt = altText || `Fresh seafood at ${SITE.name}, ${SITE.business.address.street}, ${SITE.business.address.locality}`;
+const heroAlt = altText || `${SITE.name} — ${SITE.business.address.street}, ${SITE.business.address.locality}`;
 ---
 
 <section class="hero-cursor-glow hero-noise hero-vignette relative min-h-screen flex items-center">

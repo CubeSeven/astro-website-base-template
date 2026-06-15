@@ -16,9 +16,9 @@ html, body {
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(74, 127, 157, 0.4); }
-  70% { box-shadow: 0 0 0 10px rgba(74, 127, 157, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(74, 127, 157, 0); }
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-500) 40%, transparent); }
+  70% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--color-brand-500) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-brand-500) 0%, transparent); }
 }
 
 @keyframes ken-burns {
@@ -169,7 +169,7 @@ html, body {
   }
   .tag-pill:hover {
     transform: scale(1.04);
-    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 2px 8px rgba(74,127,157,0.15);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.08);
   }
   .tag-pill-light {
     background: linear-gradient(135deg, #fff, var(--color-brand-50));
@@ -178,7 +178,7 @@ html, body {
   }
   .tag-pill-light:hover {
     transform: scale(1.04);
-    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 2px 8px rgba(74,127,157,0.12);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 2px 8px rgba(0,0,0,0.06);
   }
 
   .icon-container {
@@ -196,7 +196,7 @@ html, body {
   }
 
   .dark-section-glow {
-    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(74,127,157,0.12) 0%, transparent 70%);
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--color-brand-500) 12%, transparent) 0%, transparent 70%);
   }
 
   .hero-noise {
@@ -234,7 +234,7 @@ html, body {
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
   }
   .glass-glow:hover {
-    box-shadow: 0 0 20px rgba(74,127,157,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.1);
     border-color: rgba(255,255,255,0.2);
   }
 
@@ -267,7 +267,7 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 14px rgba(74,127,157,0.35);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
     opacity: 0;
     transform: translateY(10px);
     pointer-events: none;
@@ -283,7 +283,7 @@ html, body {
   }
   .back-to-top:hover {
     background: var(--color-brand-700);
-    box-shadow: 0 6px 20px rgba(74,127,157,0.45);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   }
 
   .faq-accordion {
@@ -318,7 +318,7 @@ html, body {
   .ripple-container .ripple {
     position: absolute;
     border-radius: 9999px;
-    background: rgba(74,127,157,0.3);
+    background: color-mix(in srgb, var(--color-brand-500) 30%, transparent);
     transform: scale(0);
     animation: ripple-effect 0.6s ease-out forwards;
     pointer-events: none;
@@ -329,7 +329,7 @@ html, body {
     position: absolute;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(74,127,157,0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-brand-500) 12%, transparent) 0%, transparent 70%);
     border-radius: 50%;
     left: var(--glow-x, 50%);
     top: var(--glow-y, 50%);

@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { SITE, canonicalUrl } from '../data/site.config';
-import { seafoodCategories } from '../data/content/seafood-categories';
+import { services } from '../data/content/services';
 import { buildSrcset, heroSizes, halfSizes } from '../utils/images';
 ---
 
@@ -22,7 +22,7 @@ import { buildSrcset, heroSizes, halfSizes } from '../utils/images';
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "itemListElement": seafoodCategories.map(cat => ({
+    "itemListElement": services.map(cat => ({
       "@type": "ListItem",
       "position": cat.position,
       "name": cat.name,
@@ -46,7 +46,7 @@ import { buildSrcset, heroSizes, halfSizes } from '../utils/images';
     </div>
   </section>
 
-  {seafoodCategories.map((cat, i) => (
+  {services.map((cat, i) => (
     <section class={`py-20 sm:py-24 ${i % 2 === 0 ? 'bg-white' : 'bg-neutral-50'}`}>
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class={`grid lg:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>

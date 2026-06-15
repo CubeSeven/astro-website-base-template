@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fishmarketskiathos.gr/sitemap.xml
+Sitemap: https://yourdomain.com/sitemap.xml
