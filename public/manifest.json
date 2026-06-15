@@ -1,12 +1,12 @@
 {
   "//_TEMPLATE_NOTE": "Update name, short_name, description, theme_color for your project. Replace icon files in /public/.",
-  "name": "Skiathos Fish Market",
-  "short_name": "Fish Market",
-  "description": "Fish market in Skiathos Town. Fresh Aegean seafood, wholesale, and yacht provisioning.",
+  "name": "Your Business Name",
+  "short_name": "Business",
+  "description": "A brief description of your business.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4A7F9D",
+  "theme_color": "#333333",
   "icons": [
     {
       "src": "/favicon-192x192.png",

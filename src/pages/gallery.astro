@@ -13,8 +13,8 @@ import { buildSrcset, heroSizes, thirdSizes, halfSizes } from '../utils/images';
 ---
 
 <Layout
-  title="Gallery | Skiathos Fish Market — Fresh Aegean Seafood Photos & Shop Images"
-  description="Photos of Skiathos Fish Market: fresh Aegean seafood, our shop in Skiathos Town, and professional fishmonger preparations."
+  title={`Gallery${SITE.seo.titleSuffix}`}
+  description={`Photos of ${SITE.name}: our work, our team, and what we deliver every day.`}
   canonical={canonicalUrl("/gallery/")}
 >
   <Header />
@@ -24,11 +24,10 @@ import { buildSrcset, heroSizes, thirdSizes, halfSizes } from '../utils/images';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-3xl mb-12 sm:mb-16">
         <span data-motion style="letter-spacing: -0.01em;" class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block">Gallery</span>
-        <h1 data-animate style="text-shadow: 0 0 40px rgba(74,127,157,0.08);" class="text-4xl sm:text-5xl font-bold text-neutral-900 leading-tight">Our Fresh Catch</h1>
-        <p data-animate class="text-lg text-neutral-600 mt-4">A look inside Skiathos Fish Market. Our products, our shop, and the quality we deliver every day. Click any photo to view full size.</p>
+        <h1 data-animate style="text-shadow: 0 0 40px rgba(74,127,157,0.08);" class="text-4xl sm:text-5xl font-bold text-neutral-900 leading-tight">Our Work</h1>
+        <p data-animate class="text-lg text-neutral-600 mt-4">A look inside {SITE.name}. Our work, our team, and the quality we deliver. Click any photo to view full size.</p>
       </div>
 
-      <!-- Row 1: Featured (left) + 4 thumbnails (right, 2x2) -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4" id="gallery-grid">
         <div data-motion style="--motion-delay:0ms" class="js-gallery-item tilt-card hover-lift group relative rounded-3xl overflow-hidden aspect-[4/5] sm:aspect-[3/4] md:aspect-auto cursor-pointer transition-transform duration-300">
           <img
@@ -57,263 +56,29 @@ import { buildSrcset, heroSizes, thirdSizes, halfSizes } from '../utils/images';
                 loading="lazy"
                 decoding="async"
                 srcset={buildSrcset(img.src)}
-                sizes="(max-width: 768px) 50vw, 25vw"
+                sizes={thirdSizes}
               />
-              <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
-              <div class="magnify-ring absolute bottom-2 right-2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none">
+              <div class="magnify-ring absolute bottom-3 right-3 w-9 h-9 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg pointer-events-none">
                 <svg class="w-4 h-4 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
               </div>
             </div>
           ))}
         </div>
       </div>
-
-      <!-- Row 2: 4 equal landscape cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-3 sm:mb-4" id="gallery-grid-2">
-        {images.slice(5, 9).map((img, i) => (
-          <div data-motion style={`--motion-delay:${i * 80}ms`} class="js-gallery-item tilt-card hover-lift group relative rounded-3xl overflow-hidden aspect-[4/3] cursor-pointer transition-transform duration-300">
-            <img
-              src={img.src}
-              alt={img.alt}
-              data-index={i + 5}
-              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-              srcset={buildSrcset(img.src)}
-              sizes="(max-width: 640px) 50vw, 25vw"
-            />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
-            <div class="magnify-ring absolute bottom-2 right-2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none">
-              <svg class="w-4 h-4 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <!-- Row 3: portrait pair -->
-      <div class="grid grid-cols-2 gap-3 sm:gap-4" id="gallery-grid-3">
-        <div data-motion style="--motion-delay:0ms" class="js-gallery-item tilt-card hover-lift group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-transform duration-300">
-          <img
-            src={images[9].src}
-            alt={images[9].alt}
-            data-index="9"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-            srcset={buildSrcset(images[9].src)}
-            sizes="(max-width: 768px) 50vw, 50vw"
-          />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
-          <div class="magnify-ring absolute bottom-2 right-2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none">
-            <svg class="w-4 h-4 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
-          </div>
-        </div>
-        <div data-motion style="--motion-delay:80ms" class="js-gallery-item tilt-card hover-lift group relative rounded-3xl overflow-hidden aspect-[3/4] cursor-pointer transition-transform duration-300">
-          <img
-            src={images[10].src}
-            alt={images[10].alt}
-            data-index="10"
-            class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-            decoding="async"
-            srcset={buildSrcset(images[10].src)}
-            sizes="(max-width: 768px) 50vw, 50vw"
-          />
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none"></div>
-          <div class="magnify-ring absolute bottom-2 right-2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-md pointer-events-none">
-            <svg class="w-4 h-4 text-neutral-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7"/></svg>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
-
-  <Lightbox images={images} />
-
-  <!-- Facebook Page Card -->
-  <section class="py-20 sm:py-24 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <span class="tag-pill inline-flex items-center gap-2 px-4 py-1.5 bg-brand-100 rounded-full text-brand-700 text-sm font-medium mb-6">
-          <span class="w-1.5 h-1.5 bg-brand-500 rounded-full"></span>
-          Follow Us
-        </span>
-        <h2 style="text-shadow: 0 0 40px rgba(74,127,157,0.08);" class="text-4xl sm:text-5xl font-bold text-neutral-900 leading-tight mb-4">Stay Connected on Facebook</h2>
-        <p class="text-neutral-600 text-lg">Follow our page for daily updates, fresh catch arrivals, and special offers.</p>
-      </div>
-      <div class="max-w-xl mx-auto rounded-3xl overflow-hidden border border-neutral-200 shadow-lg bg-white p-8">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="icon-container w-16 h-16 rounded-2xl overflow-hidden bg-neutral-100 flex items-center justify-center shrink-0">
-            <img src="/fishmarket-logo-v2.svg" alt="Skiathos Fish Market" class="w-12 h-12 object-contain" />
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-neutral-900">Skiathos Fish Market</h3>
-            <p class="text-sm text-neutral-500">887 followers</p>
-          </div>
-        </div>
-        <div class="flex flex-col gap-3">
-          <a href="https://www.facebook.com/fishmarketskiathos" target="_blank" rel="noopener noreferrer" class="hover-shimmer active:scale-[0.97] inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#1877F2] hover:bg-[#166fe5] text-white text-sm font-semibold rounded-full transition-colors w-full">
-            <Icon name="facebook" class="w-5 h-5" />
-            Visit Our Facebook Page
-          </a>
-          <a href="https://www.facebook.com/fishmarketskiathos" target="_blank" rel="noopener noreferrer" class="hover-shimmer active:scale-[0.97] inline-flex items-center justify-center gap-2 px-6 py-3 bg-neutral-100 hover:bg-neutral-200 text-neutral-700 text-sm font-semibold rounded-full transition-colors w-full">
-            <Icon name="eye" class="w-5 h-5" />
-            View Latest Updates
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <script>
-    (function() {
-      var items = document.querySelectorAll('.tilt-card');
-      items.forEach(function(item) {
-        item.addEventListener('mousemove', function(e) {
-          var rect = item.getBoundingClientRect();
-          var x = e.clientX - rect.left;
-          var y = e.clientY - rect.top;
-          var centerX = rect.width / 2;
-          var centerY = rect.height / 2;
-          var rotateX = ((y - centerY) / centerY) * -4;
-          var rotateY = ((x - centerX) / centerX) * 4;
-          item.style.transform = 'perspective(800px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
-        });
-        item.addEventListener('mouseleave', function() {
-          item.style.transform = 'perspective(800px) rotateX(0) rotateY(0) scale(1)';
-        });
-      });
-    })();
-  </script>
-
-  <script>
-    (function() {
-      var lightbox = document.getElementById('lightbox');
-      var lightboxImg = document.getElementById('lb-img');
-      var counter = document.getElementById('lb-counter');
-      var closeBtn = document.getElementById('lb-close');
-      var prevBtn = document.getElementById('lb-prev');
-      var nextBtn = document.getElementById('lb-next');
-      var thumbs = document.querySelectorAll('.lb-thumb');
-      var galleryItems = document.querySelectorAll('.js-gallery-item');
-
-      // Build imageData from DOM
-      var imageData = [];
-      galleryItems.forEach(function(item) {
-        var img = item.querySelector('img[data-index]');
-        if (img) {
-          imageData.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') });
-        }
-      });
-
-      var currentIndex = 0;
-      var total = imageData.length;
-
-      var captionEl = document.getElementById('lb-caption');
-
-      function show(index) {
-        if (index < 0) index = total - 1;
-        if (index >= total) index = 0;
-        currentIndex = index;
-        // Crossfade: brief fade out then fade in
-        lightboxImg.style.opacity = '0';
-        lightboxImg.style.transform = 'scale(0.95)';
-        setTimeout(function() {
-          lightboxImg.src = imageData[currentIndex].src;
-          lightboxImg.alt = imageData[currentIndex].alt;
-          counter.textContent = (currentIndex + 1) + ' / ' + total;
-          if (captionEl) captionEl.textContent = imageData[currentIndex].alt;
-          lightboxImg.style.opacity = '';
-          lightboxImg.style.transform = '';
-        }, 180);
-        thumbs.forEach(function(t, i) {
-          if (i === currentIndex) {
-            t.classList.remove('border-transparent');
-            t.classList.add('border-white');
-          } else {
-            t.classList.remove('border-white');
-            t.classList.add('border-transparent');
-          }
-        });
-      }
-
-      function open(index) {
-        currentIndex = index;
-        lightbox.classList.remove('hidden');
-        // Force reflow then add active for transition
-        void lightbox.offsetWidth;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        show(currentIndex);
-      }
-
-      function close() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-        setTimeout(function() {
-          lightbox.classList.add('hidden');
-        }, 350);
-      }
-
-      // Click on gallery items
-      galleryItems.forEach(function(item) {
-        item.addEventListener('click', function(e) {
-          e.preventDefault();
-          var img = item.querySelector('img[data-index]');
-          if (img) {
-            open(parseInt(img.getAttribute('data-index'), 10));
-          }
-        });
-      });
-
-      // Thumbnail clicks
-      thumbs.forEach(function(t) {
-        t.addEventListener('click', function() {
-          show(parseInt(t.getAttribute('data-index'), 10));
-        });
-      });
-
-      // Controls
-      closeBtn.addEventListener('click', close);
-      prevBtn.addEventListener('click', function() { show(currentIndex - 1); });
-      nextBtn.addEventListener('click', function() { show(currentIndex + 1); });
-
-      // Click outside image to close
-      lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) close();
-      });
-
-      // Keyboard
-      document.addEventListener('keydown', function(e) {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') close();
-        if (e.key === 'ArrowLeft') show(currentIndex - 1);
-        if (e.key === 'ArrowRight') show(currentIndex + 1);
-      });
-
-      // Swipe
-      var touchStartX = 0;
-      lightbox.addEventListener('touchstart', function(e) {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
-      lightbox.addEventListener('touchend', function(e) {
-        var diff = touchStartX - e.changedTouches[0].screenX;
-        if (Math.abs(diff) > 50) {
-          diff > 0 ? show(currentIndex + 1) : show(currentIndex - 1);
-        }
-      }, { passive: true });
-    })();
-  </script>
 
   <CTA
-    badge="Visit Us"
-    title="Visit Our Skiathos Fish Market Shop"
-    description="Visit our shop at 48 Ethnikis Antistaseos in Skiathos Town."
-    buttonText="Get Directions"
-    buttonLink="/contact"
-    image="/images/skiathos-fish-01.webp"
-    altText="Skiathos Fish Market shop on Ethnikis Antistaseos — fresh Aegean seafood display counter"
+    badge="Get in Touch"
+    title="Like What You See?"
+    description="Contact us to discuss how we can help you."
+    buttonText={`Call ${SITE.business.contact.phone.display}`}
+    buttonLink={`tel:${SITE.business.contact.phone.raw}`}
+    image="/images/placeholder.svg"
+    altText={`${SITE.name} — call us to learn more`}
   />
+
+  <Lightbox images={images} />
 
   <Footer />
 </Layout>

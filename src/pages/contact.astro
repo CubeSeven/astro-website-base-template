@@ -11,27 +11,26 @@ const contactSchema = generateContactSchema();
 ---
 
 <Layout
-  title="Contact Us | Skiathos Fish Market — Fresh Aegean Seafood Orders & Delivery"
-  description="Contact Skiathos Fish Market at 48 Ethnikis Antistaseos, Skiathos Town, Magnisia 37002. Call 693 115 6528, WhatsApp, or email. Open 24/7 for fresh Aegean seafood orders and delivery across Skiathos."
+  title={`Contact Us${SITE.seo.titleSuffix}`}
+  description={`Contact ${SITE.name} at ${SITE.business.address.street}, ${SITE.business.address.locality}. Call ${SITE.business.contact.phone.display} or email ${SITE.business.contact.email}.`}
   canonical={canonicalUrl("/contact/")}
 >
   <Header />
   <Breadcrumbs items={[{name: "Home", url: "/"}, {name: "Contact", url: "/contact"}]} />
 
-  <!-- ContactPoint Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(contactSchema)}></script>
 
   <section class="py-20 sm:py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16">
-        
+
         <div>
           <span data-motion style="letter-spacing: -0.01em;" class="text-brand-600 text-sm font-semibold tracking-wide uppercase mb-4 block">Contact Us</span>
           <h1 style="text-shadow: 0 0 40px rgba(74,127,157,0.08);" class="text-4xl sm:text-5xl lg:text-6xl font-bold text-neutral-900 leading-tight mb-6">
             <span data-animate>Get in Touch</span>
           </h1>
           <p data-animate class="text-lg text-neutral-600 mb-12">
-            We're available 24/7. Call, WhatsApp, or email us and we'll respond quickly.
+            We're available during business hours. Call, WhatsApp, or email us.
           </p>
 
           <div class="flex flex-col gap-8">
@@ -42,7 +41,7 @@ const contactSchema = generateContactSchema();
               <div>
                 <h3 class="text-lg font-bold text-neutral-900 mb-1">Phone</h3>
                 <a href={`tel:${SITE.business.contact.phone.raw}`} class="ripple-container text-brand-600 text-lg hover:underline">{SITE.business.contact.phone.display}</a>
-                <p class="text-neutral-500 text-sm mt-1">Available 24/7 for calls</p>
+                <p class="text-neutral-500 text-sm mt-1">Available during business hours</p>
               </div>
             </div>
 
@@ -86,7 +85,6 @@ const contactSchema = generateContactSchema();
               <div>
                 <h3 class="text-lg font-bold text-neutral-900 mb-1">Hours</h3>
                 <p class="text-neutral-600 text-lg">{SITE.business.hours.display}</p>
-                <p class="text-neutral-500 text-sm mt-1">24 hours a day, 7 days a week — call anytime</p>
               </div>
             </div>
           </div>
@@ -110,12 +108,12 @@ const contactSchema = generateContactSchema();
 
   <CTA
     badge="Call Us Today"
-    title="Contact Skiathos Fish Market — 24/7 Fresh Seafood Service"
-    description="Available 24/7. We're just a call or message away."
+    title={`Contact ${SITE.name} — We're Here to Help`}
+    description="Available during business hours. We're just a call or message away."
     buttonText="Send WhatsApp"
     buttonLink={SITE.business.contact.whatsappUrl}
-    image="/images/skiathos-fish-04.webp"
-    altText="Contact Skiathos Fish Market for fresh seafood orders — 48 Ethnikis Antistaseos, Skiathos Town, 24/7"
+    image="/images/placeholder.svg"
+    altText={`Contact ${SITE.name} — ${SITE.business.address.street}, ${SITE.business.address.locality}`}
   />
 
   <script>

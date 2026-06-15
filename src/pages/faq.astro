@@ -12,46 +12,45 @@ const faqSchema = generateFAQSchema();
 ---
 
 <Layout
-  title="FAQ - Frequently Asked Questions | Skiathos Fish Market"
-  description="Common questions about Skiathos Fish Market: location, hours, delivery, wholesale, yacht provisioning, traditional desalted cod, and fresh Aegean seafood categories."
+  title={`FAQ${SITE.seo.titleSuffix}`}
+  description="Frequently asked questions about our services, hours, and policies."
   canonical={canonicalUrl("/faq/")}
 >
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
-
   <Header />
   <Breadcrumbs items={[{name: "Home", url: "/"}, {name: "FAQ", url: "/faq"}]} />
 
-  <section class="relative min-h-[40vh] flex items-center bg-neutral-900 hero-noise hero-vignette">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+
+  <section class="relative min-h-[50vh] flex items-center bg-neutral-900 hero-noise hero-vignette">
     <div class="absolute inset-0 overflow-hidden">
-      <img src="/images/skiathos-fish-05.webp" alt="Skiathos Fish Market shop interior" class="parallax-bg w-full h-full object-cover opacity-30 scale-110 will-change-transform" srcset={buildSrcset("/images/skiathos-fish-05.webp")} sizes={heroSizes}>
+      <img src="/images/placeholder.svg" srcset={buildSrcset("/images/placeholder.svg")} sizes={heroSizes} alt="Frequently Asked Questions" class="parallax-bg w-full h-full object-cover opacity-40 scale-110 will-change-transform">
     </div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      <span data-motion class="inline-block text-brand-400 text-sm font-semibold tracking-widest uppercase mb-6" style="letter-spacing: -0.01em;">Support</span>
-      <h1 class="text-5xl sm:text-6xl font-bold text-white leading-none tracking-tight mb-6" style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">
+      <span data-motion class="inline-block text-brand-400 text-sm font-semibold tracking-widest uppercase mb-6" style="letter-spacing: -0.01em;">Help Center</span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-none" style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">
         <span data-animate>Frequently Asked</span><br/>
         <span data-animate class="text-brand-400">Questions</span>
       </h1>
-      <p data-animate class="text-xl text-white/80 max-w-2xl leading-relaxed">
-         Everything you need to know about Skiathos Fish Market, from our location and hours to yacht provisioning and holiday specialties.
+      <p data-animate class="text-xl text-white/80 max-w-2xl leading-relaxed mt-6">
+        Find answers to common questions. Can't find what you're looking for? Contact us directly.
       </p>
     </div>
   </section>
 
+  <!-- FAQ Accordion -->
   <section class="py-20 sm:py-24 bg-white">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="space-y-6">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col gap-4">
         {faqs.map((faq, i) => (
-          <div class={`faq-item border border-neutral-200 rounded-3xl overflow-hidden relative ${i === 0 ? 'open' : ''}`} data-motion style={`--motion-delay:${i * 50}ms`}>
-            <div class="faq-accent absolute left-0 top-0 bottom-0 bg-brand-500 rounded-l-3xl"></div>
-            <button class="faq-toggle flex items-center justify-between p-6 cursor-pointer bg-white hover:bg-neutral-50 transition-colors w-full text-left" aria-expanded={i === 0 ? 'true' : 'false'}>
+          <div data-motion style={`--motion-delay:${i * 60}ms`} class="faq-item bg-white border border-neutral-200 rounded-2xl p-6 cursor-pointer hover:border-brand-400 transition-all duration-300">
+            <div class="flex items-start justify-between gap-4" onclick={`this.closest('.faq-item').classList.toggle('open'); this.closest('.faq-item').querySelector('.faq-accordion').classList.toggle('open'); this.querySelector('svg').classList.toggle('rotate-180')`}>
               <h3 class="text-lg font-semibold text-neutral-900 pr-4">{faq.q}</h3>
-              <Icon name="chevron-down" class="w-5 h-5 text-brand-600 shrink-0 transition-transform duration-300" />
-            </button>
-            <div class={`faq-accordion ${i === 0 ? 'open' : ''}`}>
+              <svg class="w-5 h-5 text-neutral-400 shrink-0 mt-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </div>
+            <div class="faq-accordion mt-2">
               <div class="faq-accordion-inner">
-                <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-                  {faq.a}
-                </div>
+                <div class="faq-accent h-full absolute left-0 top-0 w-0 bg-brand-500 rounded-l-2xl"></div>
+                <p class="text-neutral-600 pt-3">{faq.a}</p>
               </div>
             </div>
           </div>
@@ -60,58 +59,21 @@ const faqSchema = generateFAQSchema();
     </div>
   </section>
 
-  <section class="py-20 bg-neutral-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div data-motion class="max-w-2xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-bold text-neutral-900 mb-4" style="text-shadow: 0 0 40px rgba(74,127,157,0.08);">Still have questions?</h2>
-        <p class="text-lg text-neutral-600 mb-8">We're available 24/7. Call, WhatsApp, or email us.</p>
-        <div class="flex flex-wrap gap-4">
-          <a href={`tel:${SITE.business.contact.phone.raw}`} class="hover-shimmer active:scale-[0.97] inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-full transition-colors">
-            <Icon name="phone" class="w-5 h-5" />
-            Call {SITE.business.contact.phone.display}
-          </a>
-          <a href={SITE.business.contact.whatsappUrl} target="_blank" class="hover-shimmer active:scale-[0.97] inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-colors">
-            <Icon name="whatsapp" class="w-5 h-5" />
-            WhatsApp
-          </a>
-        </div>
+  <div class="py-16 bg-neutral-50">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-lg text-neutral-600 mb-8">Still have questions? We're available during business hours.</p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href={`tel:${SITE.business.contact.phone.raw}`} class="hover-shimmer active:scale-[0.97] inline-flex items-center gap-2 px-8 py-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-full transition-colors">
+          <Icon name="phone" class="w-5 h-5" />
+          Call {SITE.business.contact.phone.display}
+        </a>
+        <a href={SITE.business.contact.whatsappUrl} target="_blank" class="hover-shimmer active:scale-[0.97] inline-flex items-center gap-2 px-8 py-4 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-colors">
+          <Icon name="whatsapp" class="w-5 h-5" />
+          WhatsApp
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
   <Footer />
-
-  <script>
-    document.querySelectorAll('.faq-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const accordion = item.querySelector('.faq-accordion');
-        const chevron = btn.querySelector('[data-name="chevron-down"], svg:last-child');
-        const isOpen = item.classList.contains('open');
-        
-        // Close all others in the same container
-        item.parentElement.querySelectorAll('.faq-item.open').forEach(openItem => {
-          if (openItem !== item) {
-            openItem.classList.remove('open');
-            openItem.querySelector('.faq-accordion').classList.remove('open');
-            openItem.querySelector('.faq-toggle').setAttribute('aria-expanded', 'false');
-            const otherChevron = openItem.querySelector('.faq-toggle svg, .faq-toggle .icon');
-            if (otherChevron) otherChevron.style.transform = '';
-          }
-        });
-        
-        if (isOpen) {
-          item.classList.remove('open');
-          accordion.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-          chevron.style.transform = '';
-        } else {
-          item.classList.add('open');
-          accordion.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          chevron.style.transform = 'rotate(180deg)';
-        }
-      });
-    });
-  </script>
 </Layout>

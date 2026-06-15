@@ -92,7 +92,7 @@ import { SITE } from '../data/site.config';
 
     <div class="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
       <p class="text-neutral-500 text-sm">&copy; {new Date().getFullYear()} {SITE.business.legalName}. All rights reserved.</p>
-      <p class="text-neutral-600 text-xs">Trusted by our customers. Skiathos Town, Greece</p>
+      <p class="text-neutral-600 text-xs">Trusted by our customers. {SITE.business.address.locality}, {SITE.business.address.countryName}</p>
     </div>
   </div>
 </footer>

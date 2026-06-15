@@ -1,172 +1,123 @@
 // ===================================================================
-//  SITE CONFIGURATION — Single source of truth
-//  To reuse this template for a new project, edit ONLY this file
-//  and src/data/content/*.ts + src/styles/theme.css
+//  SITE CONFIGURATION — Edit this file to customize your website.
+//  This is the single source of truth for all site data.
 // ===================================================================
 
 export const SITE = {
   // ── Site Identity ──────────────────────────────────────────────
-  name: "Skiathos Fish Market",
-  shortName: "Fish Market",
-  tagline: "Fresh Aegean Seafood",
+  name: "Your Business Name",
+  shortName: "Business",
+  tagline: "Your Tagline Here",
   description:
-    "Fish market in Skiathos Town. Fresh Aegean seafood, professional fishmonger services, wholesale distribution, and yacht provisioning.",
-  url: "https://fishmarketskiathos.gr",
+    "A brief description of your business for SEO and social previews.",
+  url: "https://yourdomain.com",
   language: "en",
   locale: "en_US",
 
   // ── Google Search Console ──────────────────────────────────────
-  googleVerification: "VfO55iIQf4xzliNyKizYubJTMTDhwlf6Fthz-N7oliA",
+  // Get this from: Google Search Console → Settings → Verification
+  googleVerification: "YOUR_VERIFICATION_CODE",
 
   // ── Business ───────────────────────────────────────────────────
   business: {
-    legalName: "Skiathos Fish Market - Giorgos Tsiantos",
-    alternateName:
-      "Ιχθυοπωλείο - Fishmarket 'Σκιάθος' Γιώργος Τσιαντός",
-    yearEstablished: 2004,
+    legalName: "Your Business Legal Name",
+    alternateName: "Optional alternate name in another language",
+    yearEstablished: 2020,
     priceRange: "€€",
-    languages: ["English", "Greek", "Italian"] as const,
+    languages: ["English"] as const,
 
     address: {
-      street: "48 Ethnikis Antistaseos",
-      locality: "Skiathos Town",
-      region: "Magnisia",
-      postalCode: "37002",
+      street: "123 Main Street",
+      locality: "Your City",
+      region: "Your Region",
+      postalCode: "12345",
       country: "GR",
       countryName: "Greece",
     },
 
     geo: {
-      latitude: "39.1625",
-      longitude: "23.4892",
+      latitude: "37.9838",
+      longitude: "23.7275",
     },
 
     contact: {
-      phone: { display: "693 115 6528", raw: "+306931156528" },
-      email: "skiathosfishmarket@gmail.com",
-      whatsappUrl: "https://wa.me/306931156528",
+      phone: { display: "210 000 0000", raw: "+302100000000" },
+      email: "info@yourdomain.com",
+      whatsappUrl: "https://wa.me/302100000000",
     },
 
     hours: {
-      display: "24/7, Always Open",
-      shortDisplay: "24/7 Always Open",
-      schema: "Mo,Tu,We,Th,Fr,Sa,Su 00:00-23:59",
+      display: "Mon-Fri 9:00-18:00",
+      shortDisplay: "Mon-Fri 9-6",
+      schema: "Mo,Tu,We,Th,Fr 09:00-18:00",
     },
 
     social: {
-      facebook: "https://www.facebook.com/fishmarketskiathos",
-      instagram: "https://www.instagram.com/fishmarketskiathos/",
-      twitter: "@fishmarketskiathos",
+      facebook: "https://www.facebook.com/yourbusiness",
+      instagram: "https://www.instagram.com/yourbusiness/",
+      twitter: "@yourbusiness",
     },
 
-    serviceAreas: ["Skiathos", "Skopelos", "Alonissos"] as const,
+    serviceAreas: ["City A", "City B", "City C"] as const,
   },
 
   // ── SEO Defaults ───────────────────────────────────────────────
   seo: {
-    // Default page title suffix
-    titleSuffix: " | Skiathos Fish Market",
-    // Default description if a page doesn't provide one
+    titleSuffix: " | Your Business",
     defaultDescription:
-      "Fish market in Skiathos Town. Fresh Aegean seafood, professional fishmonger services, wholesale distribution, and yacht provisioning.",
-    // Default OG image (used when a page doesn't specify one)
-    defaultOGImage:
-      "https://fishmarketskiathos.gr/images/skiathos-hero-home.webp",
-    ogImageAlt: "Fresh Aegean seafood at Skiathos Fish Market",
+      "A brief description of your business for SEO and social previews.",
+    defaultOGImage: "https://yourdomain.com/images/placeholder.svg",
+    ogImageAlt: "Your business description for social sharing",
     ogImageWidth: 1200,
     ogImageHeight: 630,
-    twitterHandle: "@fishmarketskiathos",
-    themeColor: "#4A7F9D",
-    author: "Skiathos Fish Market - Giorgos Tsiantos",
+    twitterHandle: "@yourbusiness",
+    themeColor: "#333333",
+    author: "Your Business",
   },
 
   // ── Navigation ─────────────────────────────────────────────────
   nav: {
     main: [
       { label: "Home", href: "/" },
-      { label: "Fresh Seafood", href: "/fresh-seafood" },
-      { label: "Traditional", href: "/traditional-seasonal" },
-      { label: "Wholesale & Yachts", href: "/wholesale-yachts" },
+      { label: "Services", href: "/services" },
+      { label: "About", href: "/about" },
       { label: "Gallery", href: "/gallery" },
       { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
     ] as const,
     footer: [
       { label: "Home", href: "/" },
-      { label: "Fresh Seafood", href: "/fresh-seafood" },
-      { label: "Traditional & Seasonal", href: "/traditional-seasonal" },
-      { label: "Wholesale & Yachts", href: "/wholesale-yachts" },
+      { label: "Services", href: "/services" },
+      { label: "About", href: "/about" },
       { label: "Gallery", href: "/gallery" },
       { label: "Contact", href: "/contact" },
       { label: "FAQ", href: "/faq" },
     ] as const,
   },
 
-  // ── Hero Image (homepage) ──────────────────────────────────────
-  heroImage: "/images/skiathos-hero-home.webp",
+  // ── Hero Image ─────────────────────────────────────────────────
+  heroImage: "/images/placeholder.svg",
 
-  // ── Logo & Favicon ─────────────────────────────────────────────
-  logoPath: "/fishmarket-logo-v2.svg",
+  // ── Logo ───────────────────────────────────────────────────────
+  logoPath: "/logo.svg",
 
-  // ── Google Rating ──────────────────────────────────────────────
+  // ── Rating ─────────────────────────────────────────────────────
   rating: {
     value: "5.0",
     best: "5",
-    count: 8,
+    count: 0,
   },
 
-  // ── Reviews (used for LocalBusiness schema) ────────────────────
-  reviews: [
-    {
-      author: "Ilias K.",
-      body: "The freshest fish and seafood swim here!!",
-      rating: 5,
-    },
-    {
-      author: "agelos katsouras",
-      body: "Local Fresh fish and seafood, and good prices",
-      rating: 5,
-    },
-    {
-      author: "Stamatis Valtas",
-      body: "The best fish shop in Skiathos with lots of fish and all fresh local.",
-      rating: 5,
-    },
-    {
-      author: "Steve",
-      body: "Great place for fresh fish, opens around 9am. One morning the fish didn't arrive until after 10am. Today, 21/09/23, two good size sea bream 10 euros. They will clean the fish on request.",
-      rating: 5,
-    },
-    {
-      author: "Mauro Cestra",
-      body: "The only good fishmonger on the island. The fish doesn't arrive until 10:30, but they have a little bit of everything. Everything runs out by 1:00 PM at the latest, so hurry up and buy!",
-      rating: 5,
-    },
-    {
-      author: "francesca caputo",
-      body: "We didn't spend much time in Skiathos, but the fish we bought here was incredibly fresh and delicious. Highly recommended!",
-      rating: 5,
-    },
-    {
-      author: "Riccardo Bardine",
-      body: "We arrived at the last minute and found some incredibly fresh and exceptional prawns, at a fraction of the price in other countries. The quality is truly excellent. A very pleasant surprise!",
-      rating: 5,
-    },
-    {
-      author: "ambra Parrini",
-      body: "Simply unique. The owner speaks Italian, and his fish is so fresh you'll feel like you're eating among the waves. Very fair prices.",
-      rating: 5,
-    },
-  ],
+  // ── Reviews ────────────────────────────────────────────────────
+  // Fill with your real customer reviews.
+  reviews: [],
 
   // ── Map Embeds ─────────────────────────────────────────────────
   maps: {
-    // OpenStreetMap iframe URL (used on homepage)
     openStreetMap:
-      "https://www.openstreetmap.org/export/embed.html?bbox=23.3%2C39.0%2C24.0%2C39.35&layer=mapnik&marker=39.1625%2C23.4892",
-    // Google Maps iframe URL (used on contact page)
+      "https://www.openstreetmap.org/export/embed.html?bbox=23.6%2C37.8%2C23.9%2C38.1&layer=mapnik",
     googleMaps:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3093.540569975178!2d23.482568677272546!3d39.162430031020506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a76c656d3f2675%3A0xd1d0834f3466fabb!2sfishmarketskiathos!5e0!3m2!1sen!2sgr!4v1780686523673!5m2!1sen!2sgr",
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3144.941197503706!2d23.72503437686618!3d37.97863137195051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14a1bd06239ecb9d%3A0x400bd2ce4738850!2sAthens!5e0!3m2!1sen!2sgr",
   },
 
   // ── PWA Manifest ───────────────────────────────────────────────
@@ -179,7 +130,7 @@ export const SITE = {
 // ── Helper: generate LocalBusiness JSON-LD schema ────────────────
 export function generateBusinessSchema() {
   const { business, url, rating, reviews } = SITE;
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: business.legalName,
@@ -203,21 +154,22 @@ export function generateBusinessSchema() {
     email: business.contact.email,
     priceRange: business.priceRange,
     openingHours: business.hours.schema,
-    award: ["Trusted by our customers"],
     description: SITE.description,
     areaServed: {
       "@type": "City",
-      name: "Skiathos",
+      name: business.address.locality,
     },
     sameAs: [business.social.facebook, business.social.instagram],
-    aggregateRating: {
+  };
+  if (reviews.length > 0) {
+    schema.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: rating.value,
       bestRating: rating.best,
-      ratingCount: rating.count,
-      reviewCount: rating.count,
-    },
-    review: reviews.map((r) => ({
+      ratingCount: rating.count || reviews.length,
+      reviewCount: reviews.length,
+    };
+    schema.review = reviews.map((r) => ({
       "@type": "Review",
       author: { "@type": "Person", name: r.author },
       reviewBody: r.body,
@@ -226,8 +178,9 @@ export function generateBusinessSchema() {
         ratingValue: r.rating,
         bestRating: rating.best,
       },
-    })),
-  };
+    }));
+  }
+  return schema;
 }
 
 // ── Helper: generate WebSite JSON-LD schema ──────────────────────
