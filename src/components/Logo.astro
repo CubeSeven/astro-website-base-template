@@ -1,10 +1,29 @@
-<!-- Logo component - SVG with optional white circular background for contrast -->
-<div class="logo-wrapper inline-flex items-center justify-center rounded-full bg-white overflow-hidden flex-shrink-0" class:list={Astro.props.class}>
-  <img src="/logo.svg" alt="" role="presentation" class="w-full h-full object-contain" />
+---
+const { class: className, size = "md" } = Astro.props;
+
+const sizes = {
+  sm: "h-10",
+  md: "h-14",
+  lg: "h-20",
+};
+const heightClass = sizes[size] || sizes.md;
+---
+
+<div
+  class="logo-wrapper inline-flex items-center justify-center bg-white rounded-xl px-3 flex-shrink-0"
+  class:list={[heightClass, className]}
+>
+  <img
+    src="/logo.svg"
+    alt=""
+    role="presentation"
+    class="h-full w-auto max-w-none object-contain"
+    loading="eager"
+  />
 </div>
 
 <style>
   .logo-wrapper {
-    aspect-ratio: 555/707;
+    width: auto;
   }
 </style>

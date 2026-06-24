@@ -2,6 +2,34 @@
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
 import { SITE } from '../data/site.config';
+
+function safeHostname(url: string): string {
+  try {
+    return new URL(url).hostname;
+  } catch {
+    return url;
+  }
+}
+
+function safePathname(url: string): string {
+  try {
+    return new URL(url).pathname;
+  } catch {
+    return '';
+  }
+}
+
+function instagramHandle(url: string): string {
+  try {
+    const handle = url.replace(/^https?:\/\/(www\.)?/, '').split('/').filter(Boolean).pop();
+    return handle ? `@${handle}` : url;
+  } catch {
+    return url;
+  }
+}
+
+const facebookUrl = SITE.business.social.facebook;
+const instagramUrl = SITE.business.social.instagram;
 ---
 
 <footer class="relative pt-16 bg-neutral-900 text-white overflow-hidden dark-section-glow">
@@ -24,9 +52,9 @@ import { SITE } from '../data/site.config';
           <Logo class="h-12 w-auto rounded-2xl" />
           <span class="text-2xl font-bold">{SITE.name}</span>
         </a>
-          <p class="text-neutral-400 text-lg leading-relaxed max-w-sm">
-            {SITE.description}
-          </p>
+        <p class="text-neutral-400 text-lg leading-relaxed max-w-sm">
+          {SITE.description}
+        </p>
         <div class="flex flex-wrap gap-2">
           <span class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-500/20 text-brand-400 text-xs font-semibold rounded-full tag-pill">
             <Icon name="star" class="w-3.5 h-3.5" />
@@ -38,7 +66,7 @@ import { SITE } from '../data/site.config';
             <Icon name="phone" class="w-4 h-4" />
             Call Us
           </a>
-          <a href={SITE.business.contact.whatsappUrl} target="_blank" class="hover-shimmer active:scale-[0.97] flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-full transition-colors">
+          <a href={SITE.business.contact.whatsappUrl} target="_blank" rel="noopener noreferrer" class="hover-shimmer active:scale-[0.97] flex items-center gap-2 px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-full transition-colors">
             <Icon name="whatsapp" class="w-4 h-4" />
             WhatsApp
           </a>
@@ -65,14 +93,18 @@ import { SITE } from '../data/site.config';
             <Icon name="mail" class="w-5 h-5 text-brand-400" />
             {SITE.business.contact.email}
           </a>
-          <a href={SITE.business.social.facebook} target="_blank" rel="noopener noreferrer" class="hover-lift flex items-center gap-3 text-neutral-400 hover:text-brand-400 transition-colors py-1">
-            <Icon name="facebook" class="w-5 h-5 text-brand-400" />
-            {new URL(SITE.business.social.facebook).hostname}{new URL(SITE.business.social.facebook).pathname}
-          </a>
-          <a href={SITE.business.social.instagram} target="_blank" rel="noopener noreferrer" class="hover-lift flex items-center gap-3 text-neutral-400 hover:text-brand-400 transition-colors py-1">
-            <Icon name="instagram" class="w-5 h-5 text-brand-400" />
-            {SITE.business.social.instagram.replace('https://www.', '@').replace(/\/$/, '').split('/').pop()}
-          </a>
+          {facebookUrl && (
+            <a href={facebookUrl} target="_blank" rel="noopener noreferrer" class="hover-lift flex items-center gap-3 text-neutral-400 hover:text-brand-400 transition-colors py-1">
+              <Icon name="facebook" class="w-5 h-5 text-brand-400" />
+              {safeHostname(facebookUrl)}{safePathname(facebookUrl)}
+            </a>
+          )}
+          {instagramUrl && (
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" class="hover-lift flex items-center gap-3 text-neutral-400 hover:text-brand-400 transition-colors py-1">
+              <Icon name="instagram" class="w-5 h-5 text-brand-400" />
+              {instagramHandle(instagramUrl)}
+            </a>
+          )}
           <div class="flex items-start gap-3 text-neutral-400 py-1">
             <Icon name="location" class="w-5 h-5 text-brand-400 shrink-0 mt-0.5" />
             <span>{SITE.business.address.street}<br/>{SITE.business.address.locality}, {SITE.business.address.region} {SITE.business.address.postalCode}</span>
@@ -80,11 +112,6 @@ import { SITE } from '../data/site.config';
           <div class="flex items-center gap-3 text-neutral-400 py-1">
             <Icon name="clock" class="w-5 h-5 text-brand-400" />
             {SITE.business.hours.display}
-          </div>
-        </div>
-          <div class="flex items-center gap-3 text-neutral-400 py-1">
-            <Icon name="clock" class="w-5 h-5 text-brand-400" />
-            24/7 — Always open
           </div>
         </div>
       </div>

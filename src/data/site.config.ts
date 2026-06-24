@@ -3,6 +3,13 @@
 //  This is the single source of truth for all site data.
 // ===================================================================
 
+export interface Language {
+  code: string;
+  label: string;
+  locale: string;
+  dir?: 'ltr' | 'rtl';
+}
+
 export const SITE = {
   // ── Site Identity ──────────────────────────────────────────────
   name: "Your Business Name",
@@ -14,9 +21,22 @@ export const SITE = {
   language: "en",
   locale: "en_US",
 
+  // ── Languages (i18n) ──────────────────────────────────────────
+  // Add more entries for multilingual support. First entry is default.
+  languages: [
+    { code: "en", label: "English", locale: "en_US" },
+  ] as Language[],
+
   // ── Google Search Console ──────────────────────────────────────
-  // Get this from: Google Search Console → Settings → Verification
   googleVerification: "YOUR_VERIFICATION_CODE",
+
+  // ── Blog ───────────────────────────────────────────────────────
+  blog: {
+    title: "Blog",
+    description: "Latest news, articles, and updates.",
+    path: "/blog",
+    postsPerPage: 9,
+  },
 
   // ── Business ───────────────────────────────────────────────────
   business: {
@@ -52,6 +72,12 @@ export const SITE = {
       schema: "Mo,Tu,We,Th,Fr 09:00-18:00",
     },
 
+    trustSignals: [
+      { label: "Since", value: "2020" },
+      { label: "Open", value: "Mon-Fri 9-6" },
+      { label: "Satisfaction", value: "100% Guarantee" },
+    ],
+
     social: {
       facebook: "https://www.facebook.com/yourbusiness",
       instagram: "https://www.instagram.com/yourbusiness/",
@@ -80,6 +106,7 @@ export const SITE = {
     main: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
+      { label: "Blog", href: "/blog" },
       { label: "About", href: "/about" },
       { label: "Gallery", href: "/gallery" },
       { label: "FAQ", href: "/faq" },
@@ -88,6 +115,7 @@ export const SITE = {
     footer: [
       { label: "Home", href: "/" },
       { label: "Services", href: "/services" },
+      { label: "Blog", href: "/blog" },
       { label: "About", href: "/about" },
       { label: "Gallery", href: "/gallery" },
       { label: "Contact", href: "/contact" },
@@ -109,7 +137,6 @@ export const SITE = {
   },
 
   // ── Reviews ────────────────────────────────────────────────────
-  // Fill with your real customer reviews.
   reviews: [],
 
   // ── Map Embeds ─────────────────────────────────────────────────
@@ -127,7 +154,10 @@ export const SITE = {
   },
 } as const;
 
-// ── Helper: generate LocalBusiness JSON-LD schema ────────────────
+// ── Helpers ──────────────────────────────────────────────────────
+export const isMultilingual = SITE.languages.length > 1;
+export const defaultLanguage = SITE.languages[0];
+
 export function generateBusinessSchema() {
   const { business, url, rating, reviews } = SITE;
   const schema: Record<string, unknown> = {
@@ -135,7 +165,7 @@ export function generateBusinessSchema() {
     "@type": "LocalBusiness",
     name: business.legalName,
     alternateName: business.alternateName,
-    image: SITE.heroImage,
+    image: `${SITE.url}${SITE.heroImage}`,
     address: {
       "@type": "PostalAddress",
       streetAddress: business.address.street,
@@ -155,10 +185,7 @@ export function generateBusinessSchema() {
     priceRange: business.priceRange,
     openingHours: business.hours.schema,
     description: SITE.description,
-    areaServed: {
-      "@type": "City",
-      name: business.address.locality,
-    },
+    areaServed: { "@type": "City", name: business.address.locality },
     sameAs: [business.social.facebook, business.social.instagram],
   };
   if (reviews.length > 0) {
@@ -171,19 +198,14 @@ export function generateBusinessSchema() {
     };
     schema.review = reviews.map((r) => ({
       "@type": "Review",
-      author: { "@type": "Person", name: r.author },
-      reviewBody: r.body,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: r.rating,
-        bestRating: rating.best,
-      },
+      author: { "@type": "Person", name: r.name },
+      reviewBody: r.quote || r.body,
+      reviewRating: { "@type": "Rating", ratingValue: r.rating || "5", bestRating: rating.best },
     }));
   }
   return schema;
 }
 
-// ── Helper: generate WebSite JSON-LD schema ──────────────────────
 export function generateWebsiteSchema() {
   return {
     "@context": "https://schema.org",
@@ -198,7 +220,6 @@ export function generateWebsiteSchema() {
   };
 }
 
-// ── Helper: generate ContactPoint JSON-LD schema ─────────────────
 export function generateContactSchema() {
   const { business } = SITE;
   return {
@@ -215,15 +236,7 @@ export function generateContactSchema() {
       availableLanguage: business.languages,
       hoursAvailable: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
+        dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
         opens: "00:00",
         closes: "23:59",
       },
@@ -231,7 +244,6 @@ export function generateContactSchema() {
   };
 }
 
-// ── Helper: generate BreadcrumbList JSON-LD ──────────────────────
 export function generateBreadcrumbSchema(
   items: { name: string; url: string }[],
 ) {
@@ -247,7 +259,6 @@ export function generateBreadcrumbSchema(
   };
 }
 
-// ── Helper: build canonical URL ──────────────────────────────────
 export function canonicalUrl(path: string): string {
   const normalized = path.endsWith("/") ? path : `${path}/`;
   return normalized === "/" ? `${SITE.url}/` : `${SITE.url}${normalized}`;

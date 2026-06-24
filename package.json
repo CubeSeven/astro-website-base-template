@@ -6,7 +6,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "images": "node scripts/process-images.mjs",
     "dev": "astro dev",
+    "dev:bg": "bash scripts/dev.sh",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -16,7 +19,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.2",
     "astro-icon": "^1.1.5",
-    "lucide-react": "^1.17.0",
+    "astro-sitemap": "^1.0.0",
     "swiper": "^12.2.0",
     "tailwindcss": "^4.3.0"
   }

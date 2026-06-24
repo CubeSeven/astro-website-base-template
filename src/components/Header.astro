@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Logo from './Logo.astro';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 import { SITE } from '../data/site.config';
 const pathname = Astro.url.pathname;
 ---
@@ -14,15 +15,21 @@ const pathname = Astro.url.pathname;
       </a>
 
       <nav class="hidden lg:flex items-center gap-6">
-        {SITE.nav.main.map((link) => (
-          <a href={link.href} class="text-sm font-medium text-neutral-600 hover:text-brand-600 transition-colors relative group" aria-current={pathname === `${link.href}/` || pathname === link.href ? "page" : undefined}>
-            {link.label}
-            <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        ))}
+        {SITE.nav.main.map((link) => {
+          const normalizedPath = pathname.replace(/\/$/, '') || '/';
+          const normalizedHref = link.href.replace(/\/$/, '') || '/';
+          const isActive = normalizedPath === normalizedHref || (link.href !== '/' && normalizedPath.startsWith(normalizedHref));
+          return (
+            <a href={link.href} class="text-sm font-medium text-neutral-600 hover:text-brand-600 transition-colors relative group" aria-current={isActive ? "page" : undefined}>
+              {link.label}
+              <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-600 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+          );
+        })}
       </nav>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1">
+        <LanguageSwitcher />
         <a href={SITE.business.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="hidden sm:inline-flex items-center justify-center w-9 h-9 rounded-full hover:bg-brand-50 text-brand-600 transition-colors hover:scale-110 active:scale-95">
           <Icon name="facebook" class="w-5 h-5" />
         </a>

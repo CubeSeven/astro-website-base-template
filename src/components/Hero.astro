@@ -17,7 +17,7 @@ const heroAlt = altText || `${SITE.name} — ${SITE.business.address.street}, ${
       srcset={heroSrcset}
       sizes={heroSizes}
       alt={heroAlt}
-      class="parallax-bg w-full h-full object-cover scale-110 will-change-transform"
+      class="parallax-bg w-full h-full object-cover will-change-transform"
       fetchpriority="high"
     >
     <div class="absolute inset-0 bg-gradient-to-r from-neutral-900/95 via-neutral-900/70 to-transparent"></div>
@@ -72,20 +72,15 @@ const heroAlt = altText || `${SITE.name} — ${SITE.business.address.street}, ${
 
       <div data-motion class="mt-16 p-6 bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 inline-block glass-glow">
         <div class="flex items-center gap-6">
-          <div>
-            <span class="text-white/60 text-sm">Years of Experience</span>
-            <p class="text-white font-semibold">20+ Years</p>
-          </div>
-          <div class="w-px h-10 bg-white/20"></div>
-          <div>
-            <span class="text-white/60 text-sm">Availability</span>
-            <p class="text-white font-semibold">24/7 Always Open</p>
-          </div>
-          <div class="w-px h-10 bg-white/20"></div>
-          <div>
-            <span class="text-white/60 text-sm">Quality</span>
-            <p class="text-white font-semibold">100% Local & Fresh</p>
-          </div>
+          {SITE.business.trustSignals.slice(0, 3).map((signal, i) => (
+            <>
+              {i > 0 && <div class="w-px h-10 bg-white/20"></div>}
+              <div>
+                <span class="text-white/60 text-sm">{signal.label}</span>
+                <p class="text-white font-semibold">{signal.value}</p>
+              </div>
+            </>
+          ))}
         </div>
       </div>
     </div>

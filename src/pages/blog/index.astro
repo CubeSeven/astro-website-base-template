@@ -1,0 +1,99 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import Footer from '../../components/Footer.astro';
+import { SITE, canonicalUrl } from '../../data/site.config';
+import { getSortedPosts, getCategories } from '../../data/content/blog';
+
+const posts = getSortedPosts();
+const categories = getCategories();
+const { blog } = SITE;
+---
+
+<Layout
+  title={`${blog.title}${SITE.seo.titleSuffix}`}
+  description={blog.description}
+  canonical={canonicalUrl(blog.path)}
+  ogImage={SITE.seo.defaultOGImage}
+>
+  <Header />
+  <Breadcrumbs items={[{ name: "Home", url: "/" }, { name: blog.title, url: blog.path }]} />
+
+  <section class="relative min-h-[40vh] flex items-center bg-neutral-900 hero-noise hero-vignette">
+    <div class="absolute inset-0 overflow-hidden">
+      <img src="/images/placeholder.svg" alt="" class="w-full h-full object-cover opacity-40">
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <span data-motion class="inline-block text-brand-400 text-sm font-semibold tracking-widest uppercase mb-6">
+        {blog.title}
+      </span>
+      <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-none tracking-tight mb-6">
+        <span data-animate>Latest</span><br/>
+        <span data-animate class="text-brand-400">Articles</span>
+      </h1>
+      <p data-animate class="text-xl text-white/80 max-w-2xl leading-relaxed">
+        {blog.description}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Category Filters -->
+      {categories.length > 1 && (
+        <div data-motion class="flex flex-wrap gap-2 mb-12" id="blog-filters">
+          <a href="/blog" class="px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-full" data-filter-btn="">All</a>
+          {categories.map((cat) => (
+            <a href={`/blog?category=${cat.toLowerCase()}`} class="px-4 py-2 bg-white text-neutral-700 text-sm font-medium rounded-full hover:bg-brand-50 transition-colors" data-filter-btn={cat.toLowerCase()}>
+              {cat}
+            </a>
+          ))}
+        </div>
+      )}
+
+      <!-- Blog Grid -->
+      {posts.length > 0 ? (
+        <div id="blog-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.slice(0, blog.postsPerPage).map((post, i) => (
+            <div data-motion style={`--motion-delay:${i * 100}ms`} data-category={post.category.toLowerCase()}>
+              <BlogCard post={post} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <p class="text-neutral-500 text-lg">No blog posts yet. Add some in <code class="text-brand-600">src/data/content/blog.ts</code>.</p>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const activeCategory = params.get('category');
+    if (!activeCategory) return;
+
+    const filterBtns = document.querySelectorAll('[data-filter-btn]');
+    filterBtns.forEach(function(btn) {
+      const cat = btn.getAttribute('data-filter-btn');
+      if (cat === activeCategory) {
+        btn.classList.remove('bg-white', 'text-neutral-700');
+        btn.classList.add('bg-brand-600', 'text-white');
+      }
+    });
+
+    const items = document.querySelectorAll('#blog-grid [data-category]');
+    items.forEach(function(item) {
+      const cat = item.getAttribute('data-category');
+      if (cat !== activeCategory) {
+        item.style.display = 'none';
+      }
+    });
+  })();
+</script>

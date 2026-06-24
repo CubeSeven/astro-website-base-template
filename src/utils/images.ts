@@ -1,17 +1,35 @@
 /**
  * Builds a srcset string from a base image path.
- * Responsive variants live in /images/responsive/{basename}-{width}w.webp
+ *
+ * Responsive image variants are OPTIONAL. By default this function
+ * returns only the original image as a fallback, avoiding 404s from
+ * missing generated variants.
+ *
+ * To enable responsive images, generate WebP variants at:
+ *   /images/responsive/{basename}-{width}w.webp
+ * then pass the widths array explicitly:
+ *   buildSrcset(src, [480, 768, 1080, 1536])
+ *
+ * @param src - Image path (e.g. "/images/photo.webp")
+ * @param widths - Array of widths for srcset, or false/empty to disable.
  */
-export function buildSrcset(src: string, widths: number[] = [480, 768, 1080, 1536]): string {
+export function buildSrcset(
+  src: string,
+  widths: number[] | false = false,
+): string {
+  if (!widths || widths.length === 0) {
+    // No responsive variants — return only the original as a 1x fallback.
+    return `${src.replace(/ /g, '%20')} 1600w`;
+  }
+
   const base = src.replace(/^\/images\//, '').replace(/\.webp$/, '');
-  // Encode spaces for valid URLs (filenames contain spaces)
   const encodedBase = base.replace(/ /g, '%20');
   const encodedSrc = src.replace(/ /g, '%20');
   const parts: string[] = [];
+
   for (const w of widths) {
     parts.push(`/images/responsive/${encodedBase}-${w}w.webp ${w}w`);
   }
-  // Original as the largest fallback
   parts.push(`${encodedSrc} 1600w`);
   return parts.join(', ');
 }
